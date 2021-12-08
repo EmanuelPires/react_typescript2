@@ -15,9 +15,10 @@ export const List: React.FC<IProps> = ({ people }) => {
   });
 
   const renderList = (): JSX.Element[] => {
-    return people.map((person) => {
+    return people.map((person, key: number) => {
+      console.log(key);
       return (
-        <li className="List">
+        <li className="List" key={key}>
           <div className="List-header">
             <img className="List-img" src={person.url} />
             <h2>{person.name}</h2>
