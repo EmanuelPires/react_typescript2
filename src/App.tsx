@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { List } from "./components/List";
+import "./App.css";
 
 function App() {
+  interface IState {
+    people: {
+      name: string;
+      url: string;
+      age: number;
+      note?: string;
+    }[];
+  }
+  const [people, setPeople] = useState<IState["people"]>([
+    {
+      name: "Lebrong Tames",
+      age: 36,
+      url: "https://superstarsbio.com/wp-content/uploads/2018/12/Michael-Jackson-HD-Wallpapers-For-Desktop-18.jpg",
+      note: "flot",
+    },
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>People invited to Party</h1>
+      <List people={people} />
     </div>
   );
 }
